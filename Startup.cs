@@ -28,15 +28,11 @@ namespace DotNetCoreSqlDb
             services.AddMvc();
 
             if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-            {
                 services.AddDbContext<MyDatabaseContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            } 
             else
-            {
                 services.AddDbContext<MyDatabaseContext>(options =>
                         options.UseSqlite("Data Source=MvcMove.db"));
-            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
